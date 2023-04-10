@@ -1,6 +1,10 @@
 # Created by gitignore.io
 # https://www.toptal.com/developers/gitignore/api/django
 
+### Personal ###
+NOTES/
+
+
 ### Django ###
 *.log
 *.pot

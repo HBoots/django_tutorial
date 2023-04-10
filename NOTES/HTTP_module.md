@@ -1,3 +1,0 @@
-HTTPResponse
-
-TemplateResponse
