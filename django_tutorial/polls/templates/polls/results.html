@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+<!--  -->
+{% block content %}
+<!--  -->
+<h1>{{ question.question_text }}</h1>
+<ul>
+  {% for choice in question.choice_set.all %}
+  <!-- NOTE: USE OF TEMPLATE TAG pluralize -->
+  <!-- NOTE: REMOVE ALL SPACES FROM INSIDE {} WHEN USING TAGS -->
+  <!-- https://docs.djangoproject.com/en/4.2/ref/templates/builtins/ -->
+  <li>
+    {{ choice.choice_text }} -- {{ choice.votes }}
+    vote{{choice.votes|pluralize:"s"}}
+  </li>
+  {% endfor %}
+</ul>
+<a href="{% url 'polls:detail' question.id %}">Vote again?</a>
+<!--  -->
+{% endblock content %}

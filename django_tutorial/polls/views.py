@@ -1,7 +1,8 @@
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.http import Http404
-from .models import Question
+from django.urls import reverse
+from .models import Question, Choice
 
 
 def index(request):
@@ -21,9 +22,29 @@ def detail(request, question_id):
 
 
 def results(request, question_id):
-    response = f"You're looking at the results of question {question_id}."
-    return HttpResponse(response)
+    question = get_object_or_404(Question, pk=question_id)
+    context = {
+        "question": question
+    }
+    return render(request, "polls/results.html", context)
 
 
 def vote(request, question_id):
-    return HttpResponse(f"You're voting on question {question_id}.")
+    question = get_object_or_404(Question, pk=question_id)
+    try:
+        # NOTE: USE OF choice_set FROM FOREIGN KEY RELATION
+        # https://docs.djangoproject.com/en/4.2/ref/models/relations/
+        # NOTE: USE OF request.POST["choice"]
+        selected_choice = question.choice_set.get(pk=request.POST["choice"])
+    except (KeyError, Choice.DoesNotExist):
+        context = {
+            "question": question,
+            "error_message": "You didn't select a choice."
+        }
+        return render(request, "polls/detail.html", context)
+    else:
+        selected_choice.votes += 1
+        selected_choice.save()
+        # ALWAYS RETURN AN HttpResponseRedirect AFTER SUCCESS WITH POST DATA.
+        # NOTE: reverse() TAKES AN args PARAMETER TO BE PASSED TO THE URL'S VARIABLE.
+        return HttpResponseRedirect(reverse("polls:results", args=(question.id,)))
