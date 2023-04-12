@@ -2,21 +2,21 @@
 
 [Django 4.2 Docs](https://docs.djangoproject.com/en/4.2/)
 
-### Tutorials
-
-A place to start with Django. Step by step build of a web application.
-
 ### Topic Guides
 
-High level key topics. Background information.
+A set of complete guides to various Django topics. e.g. model system, template engine, forms framework, etc.
 
-### Reference Guides
-
-Technical reference for APIs. Assumes an understanding of key concepts.
+Most developers spend most of their time here. Knowing these guides means a very high level of knowledge of Django.
 
 ### How-To Guides
 
-Steps to solving common key problems atound use-cases. More advanced than tutorials.
+These handle some specific commmon practices used with Django apps. e.g. generatieng PDFs with Django, writing custom template tags, etc.
+
+The FAQ section also has answers to more common questions.
+
+### Reference Guides
+
+The Topic Guides are relatively complete but all the nuts and bolts are in the Reference guides.
 
 ## URLs
 

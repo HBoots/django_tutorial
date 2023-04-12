@@ -1,3 +1,5 @@
+{% load static %}
+<!--  -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -6,9 +8,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <meta name="description" content="" />
     <link rel="shortcut icon" href="/images/favicon.png" />
-    <link rel="stylesheet" href="/stylesheets/style.css" />
-    <script type="text/javascript" src="/javascripts/scripts.js" defer></script>
-    <title></title>
+    <link rel="stylesheet" href="{% static 'polls/styles/styles.css' %}" />
+    <script
+      type="text/javascript"
+      src="{% static 'polls/scripts/scripts.js' %}"
+      defer
+    ></script>
+    <title>Django Docs Tutorial</title>
   </head>
   <body>
     {% block content %}
